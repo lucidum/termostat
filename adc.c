@@ -10,9 +10,8 @@ void adc_setup(void) {
     // Use ADC channel 5 (PA6)
     ADMUX |= 5 << MUX0;
 
-    // Using AVCC as voltage reference
+    // Using internal 2.56V voltage reference
     ADMUX |= 1 << REFS1;
-    //ADMUX |= (1 << REFS0)
 
     // Prescale ADC timer by 1/128 CPU clock and enable ADC
     ADCSR |= (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0) | (1 << ADEN);
