@@ -104,23 +104,12 @@ void temp_handler(void) {
         fixed_t t = make_fixed(0);
         for (uint8_t i = 0; i < N_SAMPLES; i++) {
             t = fixed_add(t, temp_samples[i]);
-            //t.magnitude += temp_samples[i].magnitude + ((t.fraction + temp_samples[i].fraction) > 255);
-            //t.fraction += temp_samples[i].fraction;
         }
 
         temp = fixed_round(fixed_div(fixed_div(t, N_SAMPLES), 4));
         set_number(0, temp, relay_on);
-        //set_number(1, t2.fraction * 100 / 256);
         sample = 0;
     }
-
-    //fixed_t t2 = fixed_div(make_fixed(raw_temp), 4);
-    //set_number(0, t2.magnitude);
-    //set_number(1, t2.fraction * 100 / 256);
-    //set_number(0, raw_temp / 4);
-
-
-    //set_number(0, raw_temp);
 }
 
 void adc_handler(void) {
